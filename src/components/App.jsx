@@ -1,40 +1,68 @@
-const section = {
-  width: '100vw',
-  height: '40vh',
-  margin: ' 0 auto',
-  marginBottom: '100px',
-  paddingRight: '100px',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
+// import { nanoid } from 'nanoid';
+import React from 'react';
+import ContactList from './phone/ContactList'
+// const section = {
+//   width: '100vw',
+//   height: '40vh',
+//   margin: ' 0 auto',
+//   marginBottom: '100px',
+//   paddingRight: '100px',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+// };
 
-state = {
-  contacts: [],
-  name: '',
-};
 
-export const App = () => {
-  return (
-    <div
-      style={{
+export default class App extends React.Component {
+  state = {
+    contacts: [
+      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    ],
+    filter: '',
+    name: '',
+    number: ''
+  }
+
+  render() {
+    return (
+      <div
+        style={{
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'column',
         fontSize: 40,
         color: '#010101',
-      }}
-    >
-      React homework template
-      <input
-        type="text"
-        name="name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-      />
-    </div>
-  );
-};
+        
+        }}
+      >
+        {/* <h1>Phone book</h1>
+        <section style={section}>
+          
+        </section> */}
+        <h1>Phonebook</h1>
+  {/* <ContactForm ... /> */}
+
+  <h2>Contacts</h2>
+  {/* {/* <Filter ... /> */}
+  <ContactList state={this.state.contacts} /> 
+      </div>
+    );
+  }
+}
+
+// nanoid
+// import { nanoid } from 'nanoid'
+// model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+
+
+// const Button = props => {
+//   const { kind, ...other } = props;
+//   const className = kind === "primary" ? "PrimaryButton" : "SecondaryButton";
+//   return <button className={className} {...other} />;
+// };
