@@ -1,6 +1,9 @@
 // import { nanoid } from 'nanoid';
 import React from 'react';
+
 import ContactList from './phone/ContactList'
+// import Filter from './phone/Filter';
+import ContactForm from './phone/ContactForm'
 // const section = {
 //   width: '100vw',
 //   height: '40vh',
@@ -26,7 +29,31 @@ export default class App extends React.Component {
     name: '',
     number: ''
   }
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+    rellenar = values => {
+      //console.log(values);
+    // const { id, name, number } = this.state;
+    // console.log(
+    //   `id: ${id}, neme: ${name}, num: ${number}`
+    // );
+    const contact = {
+      id: values.id,
+      name: values.name,
+      number: values.number,
+    };
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, contact],
+    }));
+  };
 
+  deleteContact = todoId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== todoId),
+    }));
+  };
+  
   render() {
     return (
       <div
@@ -46,11 +73,13 @@ export default class App extends React.Component {
           
         </section> */}
         <h1>Phonebook</h1>
-  {/* <ContactForm ... /> */}
-
+  {/* <ContactForm  /> */}
+  <ContactForm onSubmit={ values => this.rellenar(values)} />
   <h2>Contacts</h2>
-  {/* {/* <Filter ... /> */}
-  <ContactList state={this.state.contacts} /> 
+   {/* <Filter value={filter} onChange={this.changeFilter} />  */}
+  <ContactList state={this.state.contacts} 
+    onDeleteContact={this.deleteContact}
+  /> 
       </div>
     );
   }
