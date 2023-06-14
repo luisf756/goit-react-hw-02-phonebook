@@ -64,28 +64,32 @@ export default class App extends React.Component {
 
   render() {
     const {  filter } = this.state;
-    const visibleContacts = this.renderContacts();
+    const filterContacts = this.renderContacts();
     return (
       <div
         style={{
           height: '100vh',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'left',
+          marginLeft:'100px',
           flexDirection: 'column',
           fontSize: 30,
           color: '#010101',
         }}
       >
-        <h1>Phonebook</h1>
-        {/* <ContactForm  /> */}
+        {/* <section style={section}> */}
+        <h1>Phonebook</h1> 
         <ContactForm onSubmit={values => this.rellenar(values)} />
+        {/* </section> */}
+        {/* <section style={section}> */}
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.filterList} /> 
         <ContactList
-          state={visibleContacts}
+          state={filterContacts}
           onDeleteContact={this.deleteContact}
         />
+        {/* </section> */}
       </div>
     );
   }

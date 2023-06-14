@@ -1,4 +1,5 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import './phoneStyles.css'
 //className={style.filter}
 const Filter = ({ value, onChange }) => (
   <div >
@@ -7,19 +8,9 @@ const Filter = ({ value, onChange }) => (
   </div>
 );
 
-// Filter.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Filter;
-
-
-export const Rose = ({ value, onChange }) => {
-  return (
-  <div >
-    <p>Find contacts by name</p>
-    <input type="name" value={value} onChange={onChange} />
-  </div>
-  )
-}

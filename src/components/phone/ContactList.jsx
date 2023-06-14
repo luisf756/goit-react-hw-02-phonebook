@@ -15,12 +15,12 @@ const listItems = state.map(contact =>
     <p>
       <b>{contact.name}: </b>
         {' ' + contact.number}
-        
-    </p>
-    <button
+        <button
       type="submit"
       onClick={() => onDeleteContact(contact.id)}
     >delete</button>
+    </p>
+    
     </div>
     
   </li>
